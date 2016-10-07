@@ -1,0 +1,60 @@
+<style>
+	table, tr, td {
+		border: 1px solid black;
+		padding: 5px;
+		
+	}
+	th, td {
+		padding: 15px;
+		background-color: #ffffff;
+		opacity: 0.7;
+	}
+	table {
+		border-spacing: 15px;
+	}
+	.blshow_wrap {
+		background-image: url("/images/water.jpg");
+		padding: 10px;
+	}
+	.top {
+		width: 200px;
+		background-color:white;
+		margin:15px;
+		border-radius: 10px;
+		padding: 1px;
+	}
+</style>
+<div class="blshow_wrap">
+<div class="top">
+<h1>Blog: <%= @blog.name %></h1>
+
+<p style="margin:5px;"><%= @blog.description%></p>
+</div>
+<form action="/posts" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="hidden" name="post[blog_id]" value="<%=@blog.id %>">
+<h2>Title</h2>
+<input type="text" name="post[title]">
+<h2>Content</h2>
+<textarea type="text" name="post[content]" rows="10" cols="30"></textarea>
+<input type="submit" value="POST">
+</form>
+<h2>Posts:</h2>
+<table style="width:100%">
+	<tr style= "background-color:yellow; color:black;">
+		<td>TITLE</td>
+		<td style="text-align:center;">CONTENT</td>
+	</tr>
+<% @blog.posts.each do |p| %>
+<tr>
+	<td><%= p.title %></td>
+	<td><%= p.content %></td>
+	<td><a href="/blogs/posts/<%= p.id %>">Message</a></td>
+
+
+  
+</tr>
+<% end %>
+</table>
+</div>
+<a href="/blogs/index">Back</a>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.container {
+	background-image: url("/images/bright.jpg");
+}
+	table, tr, td {
+		border: 1px solid black;
+		padding: 5px;
+	}
+	table {
+		border-spacing: 15px;
+	}
+	td {
+		background-color:white;
+		opacity: 0.7;
+	}
+	.row.content { height:1500px; }
+
+
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row content">
+    <div class="col-sm-9">
+<img src="/images/lighthouse.jpg" alt="HTML5 Icon" style="width:180px; height:128px; opacity: 0.5; margin: 10px;"">
+<h1 style="margin:10px;">Blog</h1>
+<hr>
+
+<table style="width:100%">
+	<tr style="text-align:center;">
+		<td>Blog</td>
+		<td>Description</td>
+		
+	</tr>
+	<% @blogs.each do |blog| %>
+	<tr>
+		<td><%= blog.name %></td>
+		<td><%= blog.description %></td>
+		<td style="text-align:center;"><a class="btn btn-xs btn-danger" href="/blogs/<%= blog.id %>">Read</a></td>
+		
+
+	</tr>
+	<% end %>
+</table>
+<a class="btn btn-success" href="/blogs/new">New Blog</a>
+<a class="btn btn-warning" href="/users/index">Home</a>
+</div>
+</div>
+</div>
+</body>

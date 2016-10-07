@@ -1,0 +1,66 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<style>
+	table, tr, td {
+		border:1px solid black;
+		padding:5px;
+	}
+	table {
+		border-spacing: 15px;
+		width: 100%;
+		
+	}
+	.post_wrap {
+		background-image: url("/images/side_blue.jpg");
+	}
+</style>
+</head>
+<body>
+<div class="container">
+
+
+
+<div class="post_wrap">
+<h1>Post: <%= @post.title %></h1>
+
+<p><%= @post.content %></p>
+<form action="/messages" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="hidden" name="message[post_id]" value="<%=@post.id %>">
+<h2>Author</h2>
+<input type="text" name="message[author]">
+<h2>Message</h2>
+<textarea type="text" name="message[message]" rows="10" cols="30"></textarea>
+<input class="btn btn-danger" type="submit" value="Send">
+	
+</form>
+
+<h3>Messages</h3>
+<table>
+	<tr>
+		<td>Author</td>
+		<td>Message</td>
+	</tr>
+	<% @post.messages.each do |m| %>
+	<tr>
+		<td><%= m.author %></td>
+		<td><%= m.message %></td>
+
+	</tr>
+	<% end %>
+</table>
+</div>
+<a href="/blogs/index">Blogs</a>
+
+</div>
+</body>
+
+

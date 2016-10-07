@@ -1,0 +1,13 @@
+<h1>Create Blog</h1>
+
+<form action="/blogs" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Blog Name</p>
+  <input type="text" name="blog[name]">
+  <p>Description</p>
+  <input type="text" name="blog[description]">
+  <br>
+  <input type="submit" name="create" value="Create Blog">
+  <a href="/blogs/index">Back</a>
+	
+</form>

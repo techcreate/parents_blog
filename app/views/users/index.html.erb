@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	table, tr, td {
+		border:1px solid black;
+		padding:5px;
+	}
+	table {
+		border-spacing: 15px;
+		width: 100%;
+		padding: 50px;
+	}
+	td {
+		background-color:white;
+		opacity: 0.7;
+	}
+	.user_container {
+		background-image: url("/images/sky.jpg");
+	}
+
+</style>
+</head>
+<body>
+
+
+<div class="user_container">
+<h1>Register your account</h1>
+<h2>Users List</h2>
+
+<table>
+	<tr>
+		<td>First Name</td>
+		<td>Last Name</td>
+		<td>Email</td>
+	</tr>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= user.first_name %></td>
+		<td><%= user.last_name %></td>
+		<td><%= user.email %></td>
+
+	</tr>
+	<% end %>
+</table>
+</div>
+<a class="btn btn-warning" href="/users/new">New User</a>
+<a class="btn btn-success" href="/blogs/index">Blogs</a>
+<a class="btn btn-info" href="/users/begin">Home</a>
+<div class="below">
+	<img src="/images/boy.jpg">
+</div>
